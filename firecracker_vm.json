@@ -1,0 +1,32 @@
+{
+    "boot-source": {
+      "kernel_image_path": "/workspaces/build/firecracker-sandbox/images/vmlinux-5.10.204",
+      "boot_args": "ro console=ttyS0 noapic reboot=k panic=1 pci=off nomodules random.trust_cpu=on ip=192.168.30.39::192.168.30.1:255.255.255.0::eth0:off"
+    },
+    "drives": [
+      {
+        "drive_id": "rootfs",
+        "path_on_host": "ubuntu-microvm.ext4",
+        "is_root_device": true,
+        "is_read_only": false
+      },
+      {
+        "drive_id": "secondary",
+        "path_on_host": "overlay.img",
+        "is_root_device": false,
+        "is_read_only": false
+      }
+    ],
+    "network-interfaces": [
+        {
+            "iface_id": "eth0",
+            "guest_mac": "42:e2:53:5d:d6:c8",
+            "host_dev_name": "tap1"
+        }
+    ],
+    "machine-config": {
+      "vcpu_count": 1,
+      "mem_size_mib": 1024
+    }
+  }
+  

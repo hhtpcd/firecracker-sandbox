@@ -1,0 +1,8 @@
+*.ext4
+*.img
+mnt/
+*_config.json
+linux-*/
+*.tar.xz
+**/target/
+**/debug/

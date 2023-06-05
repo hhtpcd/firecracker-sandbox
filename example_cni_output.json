@@ -1,0 +1,51 @@
+{
+    "cniVersion": "1.0.0",
+    "interfaces": [
+        {
+            "name": "fcbr0",
+            "mac": "b6:8b:df:85:09:b3"
+        },
+        {
+            "name": "vethee1a3e70",
+            "mac": "e6:1b:f1:37:5a:c7"
+        },
+        {
+            "name": "eth0",
+            "mac": "6e:12:ef:ab:e2:8d",
+            "sandbox": "/var/run/netns/fcnet-2fd5c963-62bf-4aac-853b-955fcf9847a4"
+        },
+        {
+            "name": "tap1",
+            "sandbox": "/var/run/netns/fcnet-2fd5c963-62bf-4aac-853b-955fcf9847a4"
+        },
+        {
+            "name": "tap1",
+            "mac": "6e:12:ef:ab:e2:8d",
+            "sandbox": "cnitool-f1550adca165e79af9b0"
+        }
+    ],
+    "ips": [
+        {
+            "interface": 2,
+            "address": "192.168.30.35/24",
+            "gateway": "192.168.30.1"
+        },
+        {
+            "interface": 4,
+            "address": "192.168.30.35/24",
+            "gateway": "192.168.30.1"
+        }
+    ],
+    "dns": {
+        "nameservers": [
+            "127.0.0.53"
+        ],
+        "search": [
+            "."
+        ],
+        "options": [
+            "edns0",
+            "trust-ad"
+        ]
+    }
+}

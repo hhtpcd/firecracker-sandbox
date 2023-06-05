@@ -1,0 +1,45 @@
+{
+    "name": "portforward",
+    "cniVersion": "1.0.0",
+    "plugins": [
+      {
+        "type": "bridge",
+        "name": "firecracker-bridge",
+        "bridge": "fcbr0",
+        "isGateway": true,
+        "ipMasq": true,
+        "ipam": {
+          "type": "host-local",
+          "resolvConf": "/etc/resolv.conf",
+          "dataDir": "/srv/vm/networks",
+          "subnet": "192.168.30.0/24",
+          "rangeStart": "192.168.30.32",
+          "gateway": "192.168.30.1"
+        }
+      },
+      {
+        "type": "firewall"
+      },
+      {
+        "type": "portmap",
+        "name": "portmapper-fc",
+        "runtimeConfig": {
+          "portMappings": [
+            {
+              "hostPort": 61286,
+              "containerPort": 8080,
+              "protocol": "tcp"
+            },
+            {
+              "hostPort": 61286,
+              "containerPort": 8080,
+              "protocol": "udp"
+            }
+          ]
+        }
+      },
+      {
+        "type": "tc-redirect-tap"
+      }
+    ]
+  }
