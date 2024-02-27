@@ -1,4 +1,4 @@
-use std::{path::PathBuf, fs};
+use std::{fs, path::PathBuf};
 use sys_mount::{Mount, MountFlags};
 
 fn main() {
@@ -24,8 +24,6 @@ fn do_overlay() -> std::io::Result<()> {
         } else {
             let overlay_device_path = PathBuf::from("/dev").join(overlay);
 
-            
-
             let _mount = Mount::builder()
                 .fstype("ext4")
                 .mount(overlay_device_path, &overlay_dir)?;
@@ -46,7 +44,11 @@ fn pivot() -> std::io::Result<()> {
     let _mount = Mount::builder()
         .fstype("overlay")
         .flags(MountFlags::NOATIME)
-        .data(&format!("lowerdir=/,upperdir={},workdir={}", root.display(), work.display()))
+        .data(&format!(
+            "lowerdir=/,upperdir={},workdir={}",
+            root.display(),
+            work.display()
+        ))
         .mount("overlayfs:/overlay/root", "/mnt")?;
 
     fs::create_dir_all("/mnt/rom")?;
